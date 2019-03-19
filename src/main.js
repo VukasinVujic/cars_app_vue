@@ -13,8 +13,10 @@ Vue.use(VueRouter);
 
 Vue.config.productionTip = false;
 
-const routes = [{ path: "/cars", name: "cars", component: AppCars }];
-
+const routes = [
+  { path: "/cars", name: "cars", component: AppCars },
+  { path: "/", redirect: "cars" }
+];
 const router = new VueRouter({
   routes: routes,
   mode: "history"
