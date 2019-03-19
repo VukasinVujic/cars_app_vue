@@ -15,6 +15,9 @@ export default class Cars {
   post(url) {
     return http.post(url, body);
   }
+  add(car) {
+    return http.post("/cars", car);
+  }
 }
 
 export const cars = new Cars();
