@@ -15,6 +15,7 @@
 
 <script>
 import AppCars from "./components/AppCars";
+import { Cars } from "./services/Cars";
 
 export default {
   name: "app",
