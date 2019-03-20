@@ -2,13 +2,13 @@
   <div>
     <form @submit.prevent="addCar()">
       <label for="brand">Brand:</label>
-      <input v-model="car.brand" type="text" name="brand">
+      <input v-model="car.brand" type="text" name="brand" required oninvalid="alert('bRand Must contain 2 or more characters BRE');" pattern=".{2,}">
       <br>
       <label for="model">model:</label>
-      <input v-model="car.model" type="text" name="model">
+      <input v-model="car.model" type="text" name="model" required oninvalid="alert('model Must contain 2 or more characters BRE');" pattern=".{2,}">
       <br>
 
-      <select v-model="car.year">
+      <select v-model="car.year" required>
         <option v-for="year in years" :key="year">{{ year }}</option>
       </select>
       <br>
@@ -18,23 +18,24 @@
       <br>
 
       <label for="numberOfDoors">numberOfDoors:</label>
-      <input v-model="car.numberOfDoors" type="number" name="numberOfDoors">
+      <input v-model="car.numberOfDoors" type="number" name="numberOfDoors" required>
       <br>
 
       <label for="isAutomatic">isAutomatic:</label>
-      <input v-model="car.isAutomatic" type="checkbox" name="isAutomatic">
+      <input v-model="car.isAutomatic" type="checkbox" name="isAutomatic" required>
       <br>
 
       <label for="engine">engine:</label>
       
-      <input v-model="car.engine" type="radio" name="engine" value="diesel">
+      <input v-model="car.engine" type="radio" name="engine" value="diesel" required>
       diesel
-      <input v-model="car.engine" type="radio" name="engine" value="petrol">
+      <input v-model="car.engine" type="radio" name="engine" value="petrol" required>
       petrol
-      <input v-model="car.engine" type="radio" name="engine" value="electric">
+      <input v-model="car.engine" type="radio" name="engine" value="electric" required>
       electric
-      <input v-model="car.engine" type="radio" name="engine" value="hybrid">
+      <input v-model="car.engine" type="radio" name="engine" value="hybrid" required>
       hybrid
+      <br>  
       <button type="submit">submit</button>
       <br>
       <button type="reset">reset</button>
