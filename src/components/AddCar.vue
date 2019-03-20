@@ -38,6 +38,9 @@
       <button type="submit">submit</button>
       <br>
       <button type="reset">reset</button>
+      <br>
+      <button @click.prevent="preview()">Preview</button>
+    
     </form>
   </div>
 </template>
@@ -74,6 +77,17 @@ export default {
       this.car={};
       this.$router.push('/cars');
     },
+    preview(){
+      let newCarnew = "";
+      newCarnew+=this.car.brand + " "
+               + this.car.model + " "
+               + this.car.year + " "
+               + this.car.maxSpeed + " "
+               + this.car.numberOfDoors + " "
+               + this.car.isAutomatic + " "
+               + this.car.engine
+      alert(newCarnew);    
+    }
     
 
   },
