@@ -1,6 +1,7 @@
 <template>
   <div>
-    <form @submit.prevent="addCar()">
+    <!-- <form @submit.prevent="addCar()"> -->
+      <form @submit.prevent="onSubmit()">
       <label for="brand">Brand:</label>
       <input v-model="car.brand" type="text" name="brand" required oninvalid="alert('bRand Must contain 2 or more characters BRE');" pattern=".{2,}">
       <br>
@@ -50,6 +51,7 @@
 import { cars } from "../services/Cars";
 
 export default {
+  props:['id'],
   data() {
     return {
       car: {
@@ -88,8 +90,27 @@ export default {
                + this.car.isAutomatic + " "
                + this.car.engine
       alert(newCarnew);    
-    }
-    
+    },
+    onSubmit(){
+      if(this.car.id){
+        this.editCar()   
+      } else {
+        this.addCad()
+      }
+    },
+    editCar(){
+      cars.edit(this.car)
+      .then((success) => {
+        this.redirectToCars()
+      }).catch((error) => {
+        console.log(error);
+      })
+    },
+
+  redirectToCars(){
+    this.$router.push({name: 'cars'})
+  },
+
 
   },
   computed: {
