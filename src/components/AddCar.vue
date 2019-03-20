@@ -36,6 +36,8 @@
       <input v-model="car.engine" type="radio" name="engine" value="hybrid">
       hybrid
       <button type="submit">submit</button>
+      <br>
+      <button type="reset">reset</button>
     </form>
   </div>
 </template>
@@ -71,7 +73,8 @@ export default {
       cars.add(this.car);
       this.car={};
       this.$router.push('/cars');
-    }
+    },
+    
 
   },
   computed: {
