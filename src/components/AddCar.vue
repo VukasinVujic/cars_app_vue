@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit="addNewCar(car)">
+    <form @submit.prevent="addCar()">
       <label for="brand">Brand:</label>
       <input v-model="car.brand" type="text" name="brand">
       <br>
@@ -58,14 +58,21 @@ export default {
     };
   },
   methods: {
-    async addNewCar() {
-      try {
-        const { data } = await cars.add(this.car);
-        this.cars = data;
-      } catch (error) {
-        console.log("error");
-      }
+    // async addNewCar() {
+    //   try {
+    //     const { data } = await cars.add(this.car);
+    //     this.cars = data;
+    //   this.$router.push('cars');
+    //   } catch (error) {
+    //     console.log("error");
+    //   }
+    // }
+    addCar(){
+      cars.add(this.car);
+      this.car={};
+      this.$router.push('/cars');
     }
+
   },
   computed: {
     years() {
